@@ -2,3 +2,5 @@
 *.swp
 **/venv/*
 /media
+/static
+/ep/settings/local.py
