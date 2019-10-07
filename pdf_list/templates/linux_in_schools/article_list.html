@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+  <header class="masthead" style="background-image: url('img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Linux in schools</h1>
+            <span class="subheading">Editable "blog" in admin page about linux in schools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    {% for article in object_list %}
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="post-preview">
+                  <a href="{% url 'linux_in_schools:article-detail' article.pk %}">
+                  <h2 class="post_title">{{ article.header }}</h2>
+                  <h3 class="post-subtitle">{{ article.summary }}</h3>
+                  <p class="post-meta"></p>
+                  </a>
+              </div>
+          </div>
+              {% if article.list_picture %}
+                  <div class="col-lg-4 col-md-2 mx-auto my-auto article-list-image ">
+                  <a href="{% url 'linux_in_schools:article-detail' article.pk %}">
+                      <img src="{{article.list_picture.url}}">
+                  </a>
+                  </div>
+              {% else %}
+                  <div class="col-lg-4 col-md-2 mx-auto article-list-image">
+                  </div>
+              {% endif %}
+        </div>
+    {% endfor %}
+  </div>
+
+  <hr>
+
+{% endblock %}
